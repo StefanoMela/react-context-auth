@@ -10,24 +10,22 @@ import { AuthProvider } from "./contexts/AuthContext";
 
 import "./App.css";
 
-
 import DashboardLayout from "./layouts/DashboardLayout";
 
 export default function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>
         <Routes>
           <Route path="/" element={<DefaultLayout />}>
             <Route path="*" element={<NotFound />} />
             <Route index element={<Home />} />
           </Route>
-            <Route path="/posts" element={<PostList />} />
-            <Route path="/posts/:postId" element={<Post />} />
-          <Route path="/admin"  element={<DashboardLayout />}>
-          </Route>
+          <Route path="/posts" element={<PostList />} />
+          <Route path="/posts/:postId" element={<Post />} />
+          <Route path="/admin" element={<DashboardLayout />}></Route>
         </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
